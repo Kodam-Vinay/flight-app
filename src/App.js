@@ -85,14 +85,14 @@ function App() {
       <div>
         <input type="text" className='search-input' placeholder='From:' onChange={(event) => {setFromPlace(event.target.value); 
           setDisplayArrivalList(true); setErrorArrival(false)}} value={fromPlace}/>
-          {errorArrival ? <p>Please Select a valid city</p> : null}
+          {errorArrival ? <p className='show-the-error'>Please Select a valid city*</p> : null}
         { displayArrivalList && filterArrival?.length < arrivalArray?.length ?
         <ul className='show-the-list-of-cities'>{filterArrival.length > 0 ? filterArrival?.map((eachItem, index) => (    
             <li className='each-city-list-item-name' key={index} onClick={()=>selectedFromPlace(eachItem)}><MdFlightTakeoff/> {eachItem}</li>
         )) : <p>no results</p>}</ul>
         :null}
         <input type="date" className="search-input" value={selectedDate} onChange={setDate}/>
-        {isDateSelected ? <p>Please select the date</p> : null}
+        {isDateSelected ? <p className='show-the-error'>Please select the date*</p> : null}
       </div>
 
       <BsArrowRight size={'30px'} className='arrow-right-icon'/>
@@ -101,7 +101,7 @@ function App() {
         <input type="text" className='search-input' placeholder='To:' onChange={(event) => {setToPlace(event.target.value); 
          setDisplayDepartureList(true);setErrorDeparture(false)}} 
           value={toPlace}/>
-          {errorDeparture ? <p>Please Select a valid city</p> : null}
+          {errorDeparture ? <p className='show-the-error'>Please Select a valid city*</p> : null}
         { displayDepartureList && filterDeparture?.length < departuteArray?.length ?
         <ul className='show-the-list-of-cities'>{filterDeparture.length > 0 ? filterDeparture.map((eachItem, index) => (
           <li className='each-city-list-item-name' key={index} onClick={() => selectedToPlace(eachItem)}><MdFlightTakeoff/> {eachItem}</li>
