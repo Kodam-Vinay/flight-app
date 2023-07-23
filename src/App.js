@@ -35,7 +35,7 @@ function App() {
       }))
       setData(convertData)
     } catch (error) {
-      console.log(error)
+      throw new Error(error);
     }
   }
   
