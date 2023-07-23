@@ -118,7 +118,7 @@ function App() {
       <ul className='show-flights-ul-list'>{filterData?.map(eachItem => (
         <FlightItem key={eachItem.id} flightsList={eachItem}/>
       ))}</ul>
-      : isSearchClicked ?  <h2 className='no-flights-text'>No Flights Found At This Moment...</h2> : null}
+      : (isSearchClicked && fromPlace && toPlace) ?  <h2 className='no-flights-text'>No Flights Found At This Moment...</h2> : null}
     </div>
     </>
   );
