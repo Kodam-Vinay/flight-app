@@ -18,3 +18,5 @@
     "price":11312,"id":"00-976-0359"
 
 => based on search the cities will shows
+
+=> added error handling by using try/catch methods
