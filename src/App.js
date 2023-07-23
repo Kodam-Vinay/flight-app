@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import {BsArrowRight} from 'react-icons/bs';
+import {BsArrowRight, BsSearch} from 'react-icons/bs';
 import {MdFlightTakeoff} from 'react-icons/md'
 
 import './App.css';
@@ -12,9 +12,9 @@ function App() {
   const [displayArrivalList, setDisplayArrivalList] = useState(true)
   const [displayDepartureList, setDisplayDepartureList] = useState(true)
   const [filterData, setFilterData] = useState([])
-  console.log(filterData)
   const [errorArrival, setErrorArrival] = useState(false)
   const [errorDeparture, setErrorDeparture] = useState(false)
+  const [isSearchClicked, setSearchClicked] = useState(false)
   useEffect(() => {
     getData()
   }, [])
@@ -46,6 +46,7 @@ function App() {
   const filterArrival = arrivalArray.filter(eachItem => eachItem.toLowerCase().includes(fromPlace.toLowerCase()))
   const filterDeparture = departuteArray.filter(eachItem => eachItem.toLowerCase().includes(toPlace.toLowerCase()))
   const onClickSearch = () => {
+    setSearchClicked(true)
     if(!fromPlace){
       setErrorArrival(true)
     }
@@ -57,6 +58,7 @@ function App() {
       eachItem?.departureCity?.toLowerCase().includes(toPlace.toLowerCase()))
       setFilterData(result)
     }
+    
   }
   const selectedFromPlace =(item)=>{
     setFromPlace(item)
@@ -93,13 +95,17 @@ function App() {
         )) : <p>no results</p>}</ul>
         :null}
       </div>
-      <button type='button'className='search-button' onClick={onClickSearch}>search</button>
+      <button type='button' className='search-button' onClick={onClickSearch}>
+        <BsSearch size={'30px'}/>
+        </button>
     </div>
     <div className='results-container'>
       <h1>Avaialbe Flights</h1>
+      {filterData.length > 0 ? 
       <ul className='show-flights-ul-list'>{filterData?.map(eachItem => (
         <FlightItem key={eachItem.id} flightsList={eachItem}/>
       ))}</ul>
+      : isSearchClicked ?  <h2 className='no-flights-text'>No Flights Found At This Moment...</h2> : null}
     </div>
     </>
   );

@@ -19,11 +19,11 @@ const FlightItem = props => {
             <div className='arrival-date-container'>
                 <div>
                     <p>{arrivalDate}</p>
-                    <p>{arrivalTime}</p>
+                    <p className='arrival-time'>{arrivalTime}</p>
                 </div>
                 <p className='price'>{price}<FaRupeeSign size={'15px'}/></p>
             </div>
-            <button>Book</button>
+            <button className='book-ticket'>Book</button>
         </li>
     )
 }
