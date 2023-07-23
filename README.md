@@ -20,3 +20,7 @@
 => based on search the cities will shows
 
 => added error handling by using try/catch methods
+
+=> I used the 'date-fns' package to compare the data with my input entered data
+
+=> I used the 'react-icons' package to add some icons into my project

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import {BsArrowRight, BsSearch} from 'react-icons/bs';
 import {MdFlightTakeoff} from 'react-icons/md'
+import {format} from 'date-fns'
 
 import './App.css';
 import FlightItem from './FlightItem';
@@ -15,10 +16,12 @@ function App() {
   const [errorArrival, setErrorArrival] = useState(false)
   const [errorDeparture, setErrorDeparture] = useState(false)
   const [isSearchClicked, setSearchClicked] = useState(false)
+  const [selectedDate, setSelectedDate] = useState('')
+  const [isDateSelected, setToDateSelected] = useState(false)
+
   useEffect(() => {
     getData()
   }, [])
-
   const getData = async () => {
     try {
       const apiUrl = "https://kodam-vinay.github.io/flights-api/flight-mockdata.json"
@@ -27,7 +30,7 @@ function App() {
       const convertData = jsonData.map(eachItem => ({
         airline: eachItem?.airline,
         arrivalCity: eachItem?.arrival_city,
-        arrivalDate: eachItem?.arrival_date,
+        arrivalDate: format( new Date(eachItem?.arrival_date), 'MM/dd/yyyy'),
         departureCity: eachItem?.departure_city,
         arrivalTime: eachItem.arrival_time,
         price: eachItem.price,
@@ -38,7 +41,6 @@ function App() {
       throw new Error(error);
     }
   }
-  
   const uniqueArrivalCities = new Set(data.map(eachItem => eachItem.arrivalCity))
   const uniqueDipartureCities = new Set(data.map(eachItem => eachItem.departureCity))
   const arrivalArray = [...uniqueArrivalCities]
@@ -53,9 +55,13 @@ function App() {
     if(!toPlace){
       setErrorDeparture(true)
     }
-    if(fromPlace && toPlace){
-      const result = data.filter(eachItem => eachItem?.arrivalCity?.toLowerCase().includes(fromPlace.toLowerCase()) &&       
-      eachItem?.departureCity?.toLowerCase().includes(toPlace.toLowerCase()))
+    if(!selectedDate){
+      setToDateSelected(true)
+    }
+    if(fromPlace && toPlace && selectedDate){
+      const formatDate =format( new Date(selectedDate), 'MM/dd/yyyy')
+      const result = data.filter(eachItem => (eachItem?.arrivalCity?.toLowerCase().includes(fromPlace.toLowerCase()) &&       
+      eachItem?.departureCity?.toLowerCase().includes(toPlace.toLowerCase())) && eachItem.arrivalDate.includes(formatDate))
       setFilterData(result)
     }
     
@@ -67,6 +73,11 @@ function App() {
   const selectedToPlace = (item) => {
     setToPlace(item)
     setDisplayDepartureList(false)
+  }
+
+  const setDate = event => {
+    setSelectedDate(event.target.value)
+    setToDateSelected(false)
   }
   return (
     <>
@@ -80,6 +91,8 @@ function App() {
             <li className='each-city-list-item-name' key={index} onClick={()=>selectedFromPlace(eachItem)}><MdFlightTakeoff/> {eachItem}</li>
         )) : <p>no results</p>}</ul>
         :null}
+        <input type="date" className="search-input" value={selectedDate} onChange={setDate}/>
+        {isDateSelected ? <p>Please select the date</p> : null}
       </div>
 
       <BsArrowRight size={'30px'} className='arrow-right-icon'/>
