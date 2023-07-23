@@ -1,0 +1,76 @@
+.each-flight-list-item{
+    height: 150px;
+    border: 1px solid;
+    border-radius: 10px;
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and(max-width: 890px) {
+    .each-flight-list-item{
+        width: 100%;
+    }    
+}
+
+.each-flight-list-item img{
+    height: 45px;
+    width: 60px;
+}
+.from-place-to-place-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 20px;
+}
+
+.flight-logo-airline-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flight-logo-airline-container p {
+    color: lightgray;
+}
+
+.arrival-date-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 20px;
+    margin-top: 10px;
+    padding-left: 8px;
+}
+.price{
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+.arrival-date-container div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 20px;
+}
+.arrival-date-container div p{
+    margin-right: 5px;
+}
+
+.each-flight-list-item button{
+    margin-top: 10px;
+    height: 30px;
+    width: 90%;
+    align-self: center;
+    border-radius: 10px;
+    background: lightblue;
+    border: 0;
+    cursor: pointer;
+    outline: none;
+}
+
+.each-flight-list-item button :hover{
+    background:rgb(132, 204, 228);
+}

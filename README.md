@@ -7,3 +7,14 @@
 => i created a file in github flight-mockdata.json in github and added data into it then i generate a page form github so it giving this url => https://kodam-vinay.github.io/flights-api/flight-mockdata.json
 
 => I used above url to get the data into my app then i converted the pure json data to object format using data.json() by calling the api using fetch() method
+
+=> the json data contain
+    "flight_number":9346,
+    "departure_city":"New York",
+    "arrival_city":"Italy",
+    "arrival_date":"2/17/2024",
+    "arrival_time":"1:54 AM",
+    "airline":"American",
+    "price":11312,"id":"00-976-0359"
+
+=> based on search the cities will shows

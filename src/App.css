@@ -3,11 +3,61 @@
   background: #d6d2d2;
   padding: 10px;
   margin: 10px;
-  min-height: 200px;
   flex-direction: row;
-  align-items: center ;
   border-radius: 25px;
   justify-content: center;
+}
+
+
+@media screen and (max-width: 890px){
+  .main-bg-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .show-the-list-of-cities{
+    width: 100%;
+  }
+  
+  .main-bg-container div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .search-input{
+   width: 100%;
+    border-radius: 10px;
+    border: 0;
+    outline: none;
+    padding: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+
+  .search-button{
+    align-self: center;
+    margin-bottom: 10px;
+    height: 40px;
+  }
+  .results-container{
+    width: 100%;
+  }
+
+  .show-flights-ul-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .arrow-right-icon{
+    display: none;
+  }
 }
 
 .main-bg-container div{
@@ -16,24 +66,26 @@
   align-items: center;
 }
 
-.main-bg-container div ul{
+.arrow-right-icon{
+  margin-top: 25px;
+}
+
+
+.show-the-list-of-cities{
   width: 300px;
-  height: 80px;
+  max-height: 80px;
   overflow-y: auto;
   margin: 10px;
   border-radius: 10px;
   border: 0;
   outline: none;
   padding: 10px;
-  margin-left: 30px;
-  margin-right: 30px;
   font-size: 20px;
   background: #fff;
-  min-height: 100px;
   list-style: none;
 }
 
-.main-bg-container div input{
+.search-input{
   height: 40px;
   width: 300px;
   margin: 10px;
@@ -46,16 +98,23 @@
   font-size: 20px;
 }
 
-.main-bg-container button{
+.each-city-list-item-name{
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.search-button{
   width: 100px;
   background: #03fcf4;
-  border-radius: 5px;
+  border-radius: 10px;
   outline: none;
   cursor: pointer;
   border: 0;
   font-size: 20px;
-  padding: 20px;
+  height: 60px;
+  margin-top: 10px;
 }
+
 
 .results-container{
   display: flex;
@@ -65,6 +124,9 @@
   text-align: center;
 }
 
-.results-container ul{
+.show-flights-ul-list{
   padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
 }
